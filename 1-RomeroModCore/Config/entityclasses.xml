@@ -43,6 +43,7 @@
 		<property name="ArmsExplosionDamageMultiplier" value="2"/>
 		<property name="HeadExplosionDamageMultiplier" value="2"/>
 		<property name="ChestExplosionDamageMultiplier" value="2"/>
+		<property name="ExplodeHealthThreshold" value="0"/>
 
 		<!-- Gameplay -->
 		<property name="HandItem" value="meleeHandZombieCop"/>
