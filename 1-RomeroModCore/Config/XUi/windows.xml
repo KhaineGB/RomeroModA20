@@ -1,0 +1,18 @@
+<configs>
+	<!-- Custom Logo Mod -->
+	<append xpath="/windows">
+		<window name="RomeroModInGameMenu" anchor="CenterCenter" pos="-125,200" width="250" height="200" controller="InGameMenuWindow" cursor_area="true">
+			<texture name="RMod" depth="0" size="888,666" texture="@file:Mods\1-RomeroModCore\UI\MainMenu\RomeroModLogo.png" material="Materials/Transparent Colored" pos="-299,150" />
+			<label name="RModVersion" pos="0, -240" depth="0" size="250,33" text="V2" font_size="42" effect="outline" color="[white]" justify="center" />
+			<grid name="buttons" pos="0, -275" cols="1" width="250" cell_width="250" cell_height="48" arrangement="vertical" repeat_content="false" >
+				<simplebutton name="btnInvite" depth="3" width="250" height="38" caption_key="xuiMenuInvite" font_size="32" />
+				<simplebutton name="btnOptions" depth="3" width="250" height="38" caption_key="xuiMenuOptions" font_size="32" />
+				<simplebutton name="btnHelp" depth="3" width="250" height="38" caption_key="xuiMenuHelp" font_size="32" />
+				<simplebutton name="btnSave" depth="3" width="250" height="38" caption_key="xuiMenuSave" font_size="32" />
+				<simplebutton name="btnExit" depth="3" width="250" height="38" caption_key="xuiMenuExit" font_size="32" />
+				<simplebutton name="btnExportPrefab" depth="3" width="250" height="38" caption_key="xuiMenuExportPrefab" font_size="32" />
+				<simplebutton name="btnTpPoi" depth="3" width="250" height="38" caption_key="xuiMenuTeleportPoiButton" font_size="32" />
+			</grid>
+		</window>
+	</append>
+</configs>

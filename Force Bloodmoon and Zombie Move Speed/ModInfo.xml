@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <ModInfo>
+    <Name value="Force Bloodmoon and Zombie Move Speed" />
+    <Description value="Sets bloodmoons to off and zombies to always walk for Romero Mod." />
+    <Author value="KhaineGB" />
+    <Version value="1.0" />
+    <Website value="" />
+  </ModInfo>
+  <DMT>
+    <dependencies />
+    <conflicts />
+  </DMT>
+</xml>

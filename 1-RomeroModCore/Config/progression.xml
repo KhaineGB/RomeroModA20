@@ -1,0 +1,43 @@
+<configs>
+	<!-- Increasing XP required to level due to lots more zombies -->
+	<set xpath="/progression/level[@exp_to_level='10000']/@exp_to_level">13000</set>
+	<!-- Moving T1 stuff to level 3 so scrap can be slotted in -->
+	<set xpath="/progression/perks/perk[@name='perkMiner69r']/effect_group/passive_effect[@name='RecipeTagUnlocked'][@level='1,5']/@level">3,5</set>
+	<set xpath="/progression/perks/perk[@name='perkPummelPete']/effect_group/passive_effect[@name='RecipeTagUnlocked'][@level='1,5']/@level">3,5</set>
+	<set xpath="/progression/perks/perk[@name='perkJavelinMaster']/effect_group/passive_effect[@name='RecipeTagUnlocked'][@level='1,5']/@level">3,5</set>
+	<set xpath="/progression/perks/perk[@name='perkBrawler']/effect_group/passive_effect[@name='RecipeTagUnlocked'][@level='1,5']/@level">3,5</set>
+	<set xpath="/progression/perks/perk[@name='perkDeepCuts']/effect_group/passive_effect[@name='RecipeTagUnlocked'][@level='1,5']/@level">3,5</set>
+	
+	<!-- Changing Localization Keys so I can use new ones -->
+	<set xpath="/progression/perks/perk[@name='perkMiner69r']/effect_group/effect_description[@level='1'][@long_desc_key='perkMiner69rRank1LongDesc']/@long_desc_key">perkMiner69rRank1LongNewDesc</set>
+	<set xpath="/progression/perks/perk[@name='perkMiner69r']/effect_group/effect_description[@level='3'][@long_desc_key='perkMiner69rRank3LongDesc']/@long_desc_key">perkMiner69rRank3LongNewDesc</set>
+	
+	<set xpath="/progression/perks/perk[@name='perkPummelPete']/effect_group/effect_description[@level='1'][@long_desc_key='perkPummelPeteRank1LongDesc']/@long_desc_key">perkPummelPeteRank1LongNewDesc</set>
+	<set xpath="/progression/perks/perk[@name='perkPummelPete']/effect_group/effect_description[@level='3'][@long_desc_key='perkPummelPeteRank3LongDesc']/@long_desc_key">perkPummelPeteRank3LongNewDesc</set>
+	
+	<set xpath="/progression/perks/perk[@name='perkJavelinMaster']/effect_group/effect_description[@level='1'][@long_desc_key='perkJavelinMasterRank1LongDesc']/@long_desc_key">perkJavelinMasterRank1LongNewDesc</set>
+	<set xpath="/progression/perks/perk[@name='perkJavelinMaster']/effect_group/effect_description[@level='3'][@long_desc_key='perkJavelinMasterRank3LongDesc']/@long_desc_key">perkJavelinMasterRank3LongNewDesc</set>
+	
+	<set xpath="/progression/perks/perk[@name='perkBrawler']/effect_group/effect_description[@level='1'][@long_desc_key='perkBrawlerRank1LongDesc']/@long_desc_key">perkBrawlerRank1LongNewDesc</set>
+	<set xpath="/progression/perks/perk[@name='perkBrawler']/effect_group/effect_description[@level='3'][@long_desc_key='perkBrawlerRank3LongDesc']/@long_desc_key">perkBrawlerRank3LongNewDesc</set>
+	
+	<set xpath="/progression/perks/perk[@name='perkDeepCuts']/effect_group/effect_description[@level='1'][@long_desc_key='perkDeepCutsRank1LongDesc']/@long_desc_key">perkDeepCutsRank1LongNewDesc</set>
+	<set xpath="/progression/perks/perk[@name='perkDeepCuts']/effect_group/effect_description[@level='3'][@long_desc_key='perkDeepCutsRank3LongDesc']/@long_desc_key">perkDeepCutsRank3LongNewDesc</set> 
+	
+	<!-- Adding in Scrap Unlocks -->
+	<append xpath="/progression/perks/perk[@name='perkMiner69r']/effect_group">
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,5" value="1" tags="meleeToolScrapFireaxe,meleeToolScrapPickaxe,meleeToolScrapShovel"/>
+	</append>
+	<append xpath="/progression/perks/perk[@name='perkPummelPete']/effect_group">
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,5" value="1" tags="meleeWpnClubScrap"/>
+	</append>
+	<append xpath="/progression/perks/perk[@name='perkJavelinMaster']/effect_group">
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,5" value="1" tags="meleeWpnSpearScrap"/>
+	</append>
+	<append xpath="/progression/perks/perk[@name='perkBrawler']/effect_group">
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,5" value="1" tags="meleeWpnKnucklesScrap"/>
+	</append>
+	<append xpath="/progression/perks/perk[@name='perkDeepCuts']/effect_group">
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,5" value="1" tags="meleeWpnBladeScrapMachete"/>
+	</append>
+</configs>

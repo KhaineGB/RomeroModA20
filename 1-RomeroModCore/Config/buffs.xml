@@ -1,0 +1,38 @@
+<configs>
+	<append xpath="/buffs">
+	<!-- putting a buff in so the game doesn't freak out. It appears to work -->
+		<buff name="trapDamage1Trigger" name_key="trapDamage1EffectName" description_key="trapDamage1EffectDesc" tooltip_key="trapDamage1EffectTooltip" icon="ui_game_symbol_critical" icon_color="255,0,0" icon_blink="true">
+			<damage_type value="bloodloss"/>
+			<stack_type value="replace"/>
+			<duration value="20"/>
+			
+			<effect_group>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="0.2"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="0.2"/>
+			</effect_group>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="bleedCounter" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="bleedCounter" operation="add" value="1">
+					<requirement name="CVarCompare" cvar="bleedCounter" operation="LT" value="3"/>
+				</triggered_effect>
+
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="bleedAmount" operation="set" value="@bleedCounter"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="bleedAmount" operation="set" value="@bleedCounter"/>
+
+				<passive_effect name="HealthChangeOT" operation="base_subtract" value="@bleedAmount"/>
+
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="StopSound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="StopSound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="PlaySound" sound="buff_bleeding" play_in_head="true"/>
+
+				<triggered_effect trigger="onSelfDied" action="RemoveBuff" buff="buffInjuryBleeding"/>		
+			</effect_group>			
+		</buff>
+	</append>
+</configs>
+
+
+
+

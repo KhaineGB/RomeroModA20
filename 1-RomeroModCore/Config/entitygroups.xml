@@ -1,0 +1,10 @@
+<config>
+	<set xpath="/entitygroups/entitygroup[@name='SupplyCrates_General']">
+		<entity name="sc_Melee"/>
+		<entity name="sc_Ranged"/>
+		<entity name="sc_Food"/>
+		<entity name="sc_Construction"/>
+		<entity name="sc_Medical"/>
+		<entity name="sc_Ammo"/>
+	</set>
+</config>
