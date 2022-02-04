@@ -40,7 +40,7 @@
 			<Version>Latest</Version>
 			<ReleaseNotes>https://community.7daystodie.com/topic/21581-romero-mod-a-game-modesuite-of-zombie-tweaks/</ReleaseNotes>
 			<Downloads>
-				<Download>https://github.com/KhaineGB/RomeroModA20/archive/refs/heads/main.zip</Download>
+				<Download>https://github.com/KhaineGB/RomeroModA20.git</Download>
 			</Downloads>
 		</Server>	
 	</ServerGroup>
