@@ -1,0 +1,233 @@
+<config>
+	<set xpath="/entity_classes/entity_class[@name='animalSnake']/effect_group/passive_effect[@name='HealthMax'][@operation='base_set']/@value">5</set>
+	<set xpath="/entity_classes/entity_class[@name='zombieSpider']/property[@name='JumpMaxDistance']/@value">2.8, 3.9</set>
+	<set xpath="/entity_classes/entity_class[@name='zombieSpiderFeral']/property[@name='JumpMaxDistance']/@value">4.6, 5</set>
+	
+	<set xpath="/entity_classes/entity_class[@name='zombieFatCop']">
+		<property name="Tags" value="entity,zombie,walker,zombieCop"/>
+		<property name="Mesh" value="#Entities/Zombies?Prefabs/ZCop.prefab"/>
+		<property name="Class" value="EntityZombieCop"/>
+		<property name="WalkType" value="1"/>
+		<property name="RightHandJointName" value="Jaw"/>
+		<property name="AvatarController" value="AvatarZombie01Controller"/>
+		<property name="ModelType" value="Standard"/>
+		<property name="Mass" value="320"/>
+		<property name="Weight" value="70"/>
+		<property name="PhysicsBody" value="zombieFat"/>
+		<property name="RootMotion" value="true"/>
+		<property name="HasDeathAnim" value="true"/>
+		<property name="PushFactor" value="20"/>
+
+		<property name="AITask-1" value="BreakBlock"/>
+		<property name="AITask-2" value="ApproachAndAttackTarget" data="class=EntityEnemyAnimal,0,EntityPlayer"/>
+		<property name="AITask-3" value="ApproachSpot"/>
+		<property name="AITask-4" value="Look"/>
+		<property name="AITask-5" value="Wander"/>
+		<property name="AITask-6" value=""/><!-- Marks end, so we don't inheirit -->
+
+		<property name="SoundRandom" value="Enemies/Acid_Puking_Hulk/hulkroam"/>
+		<property name="SoundAlert" value="Enemies/Acid_Puking_Hulk/hulkalert"/>
+		<property name="SoundAttack" value="Enemies/Acid_Puking_Hulk/hulkattack"/>
+		<property name="SoundHurt" value="Enemies/Acid_Puking_Hulk/hulkpain"/>
+		<property name="SoundDeath" value="Enemies/Acid_Puking_Hulk/hulkdeath"/>
+		<property name="SoundSense" value="Enemies/Acid_Puking_Hulk/hulksense"/>
+		<property name="SoundFootstepModifier" value="Animals/Bear/bear_footstep"/>
+		<property name="SoundExplodeWarn" value="hulkexplodewarning"/>
+
+		<property name="DismemberMultiplierLegs" value="0"/>
+		<property name="LegCrawlerThreshold" value="0"/>
+		<property name="LegCrippleThreshold" value="0"/>
+		<property name="KnockdownProneDamageThreshold" value="0"/>
+		<property name="KnockdownKneelDamageThreshold" value="0"/>
+		<property name="LegsExplosionDamageMultiplier" value="2"/> <!-- volatile so vulnerable to land mines/explosives -->
+		<property name="ArmsExplosionDamageMultiplier" value="2"/>
+		<property name="HeadExplosionDamageMultiplier" value="2"/>
+		<property name="ChestExplosionDamageMultiplier" value="2"/>
+		<property name="ExplodeHealthThreshold" value="0"/>
+
+		<!-- Gameplay -->
+		<property name="HandItem" value="meleeHandZombieCop"/>
+		<property name="Explosion.ParticleIndex" value="8"/>
+		<property name="Explosion.RadiusBlocks" value="5"/>
+		<property name="Explosion.RadiusEntities" value="6"/>
+		<property name="Explosion.BlockDamage" value="500"/>
+		<property name="Explosion.EntityDamage" value="150"/>
+		<property name="Explosion.DamageBonus.earth" value="0"/>
+		<property name="JumpMaxDistance" value="0, 0"/>
+
+		<property name="ExperienceGain" value="750"/> <!-- XP strong -->
+		<property name="LootDropEntityClass" value="EntityLootContainerStrong"/>
+		<effect_group name="Base Effects">
+			<passive_effect name="HealthMax" operation="base_set" value="250"/>
+			<passive_effect name="HealthMax" operation="perc_set" value="1"/> <!-- Zombie HP scale -->
+			<triggered_effect trigger="onSelfFirstSpawn" action="ModifyCVar" target="self" cvar="EntityBoss" operation="set" value="1"/>
+		</effect_group>
+	</set>
+	
+	<set xpath="/entity_classes/entity_class[@name='animalZombieVultureRadiated']">
+		<property name="Tags" value="entity,animal,zombie,hostile,vulture"/>
+		<property name="Mass" value="50"/>
+		<property name="SizeScale" value="1.2"/>
+
+		<property name="MoveSpeed" value=".7"/>
+		<property name="MoveSpeedAggro" value="1.5, 1.5"/>
+		<property name="MaxTurnSpeed" value="150"/>
+
+		<property name="ExperienceGain" value="1200"/> <!-- XP grunt radiated -->
+
+		<property name="DeadBodyHitPoints" value="200"/>
+		<drop event="Harvest" name="foodRawMeat" count="0" tool_category="Butcher"/>
+		<drop event="Harvest" name="foodRottingFlesh" tag="butcherHarvest" count="6"/> <!-- animalZombieVultureRadiated -->
+		<drop event="Harvest" name="resourceFeather" tag="butcherHarvest" count="35"/>
+		<drop event="Harvest" name="resourceBone" tag="butcherHarvest" count="8"/>
+		<drop event="Harvest" name="resourceBone" tag="allToolsHarvest" count="5"/>
+
+		<effect_group name="Base Effects">
+			<passive_effect name="HealthMax" operation="base_set" value="120"/>
+			<passive_effect name="HealthMax" operation="perc_set" value="1"/> <!-- Zombie HP scale -->
+			<passive_effect name="EntityDamage" operation="perc_add" value=".4"/> <!-- Feral damage -->
+			<triggered_effect trigger="onOtherDamagedSelf" action="ModifyCVar" target="self" cvar="RadiatedRegenAmount" operation="set" value="4"/>
+			<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" target="self" buff="buffRadiatedRegen"/>
+		</effect_group>
+	</set>
+	
+	<append xpath="/entity_classes">
+		<entity_class name="sc_Melee">
+			<property name="Class" value="EntitySupplyCrate"/>
+			<property name="Parent" value="SupplyCrates"/>
+			<property name="Prefab" value="SupplyCrate"/>
+			<property name="Mesh" value="SupplyCrate/SupplyCrateEntityPrefab"/>
+			<property name="ModelType" value="SupplyCrate"/>
+			<property name="Faction" value="none"/>
+			<property name="MaxHealth" value="200"/>
+			<property name="Weight" value="100"/>
+			<property name="HasRagdoll" value="false"/>
+			<property name="SurfaceCategory" value="wood"/>
+			<property name="ParticleOnDeath" value="supply_crate_gib_Prefab"/>
+			<property name="LootListAlive" value="26"/>
+			<property name="IsEnemyEntity" value="false"/>
+			<property name="SoundParachuteOpen" value="SupplyDrops/Parachute_Opens"/>
+			<property name="SoundLanding" value="SupplyDrops/Supply_Crate_Land"/>
+			<property name="TimeStayAfterDeath" value="0"/>
+			<effect_group name="Base Effects">
+				<passive_effect name="HealthMax" operation="base_set" value="200"/>
+			</effect_group>
+			<property name="NavObject" value="supply_drop" />
+		</entity_class>
+
+		<entity_class name="sc_Ranged">
+			<property name="Class" value="EntitySupplyCrate"/>
+			<property name="Parent" value="SupplyCrates"/>
+			<property name="Prefab" value="SupplyCrate"/>
+			<property name="Mesh" value="SupplyCrate/SupplyCrateEntityPrefab"/>
+			<property name="ModelType" value="SupplyCrate"/>
+			<property name="Faction" value="none"/>
+			<property name="MaxHealth" value="200"/>
+			<property name="Weight" value="100"/>
+			<property name="HasRagdoll" value="false"/>
+			<property name="SurfaceCategory" value="wood"/>
+			<property name="ParticleOnDeath" value="supply_crate_gib_Prefab"/>
+			<property name="LootListAlive" value="27"/>
+			<property name="IsEnemyEntity" value="false"/>
+			<property name="SoundParachuteOpen" value="SupplyDrops/Parachute_Opens"/>
+			<property name="SoundLanding" value="SupplyDrops/Supply_Crate_Land"/>
+			<property name="TimeStayAfterDeath" value="0"/>
+			<effect_group name="Base Effects">
+				<passive_effect name="HealthMax" operation="base_set" value="200"/>
+			</effect_group>
+			<property name="NavObject" value="supply_drop" />
+		</entity_class>
+
+		<entity_class name="sc_Food">
+			<property name="Class" value="EntitySupplyCrate"/>
+			<property name="Parent" value="SupplyCrates"/>
+			<property name="Prefab" value="SupplyCrate"/>
+			<property name="Mesh" value="SupplyCrate/SupplyCrateEntityPrefab"/>
+			<property name="ModelType" value="SupplyCrate"/>
+			<property name="Faction" value="none"/>
+			<property name="MaxHealth" value="200"/>
+			<property name="Weight" value="100"/>
+			<property name="HasRagdoll" value="false"/>
+			<property name="SurfaceCategory" value="wood"/>
+			<property name="ParticleOnDeath" value="supply_crate_gib_Prefab"/>
+			<property name="LootListAlive" value="28"/>
+			<property name="IsEnemyEntity" value="false"/>
+			<property name="SoundParachuteOpen" value="SupplyDrops/Parachute_Opens"/>
+			<property name="SoundLanding" value="SupplyDrops/Supply_Crate_Land"/>
+			<property name="TimeStayAfterDeath" value="0"/>
+			<effect_group name="Base Effects">
+				<passive_effect name="HealthMax" operation="base_set" value="200"/>
+			</effect_group>
+			<property name="NavObject" value="supply_drop" />
+		</entity_class>
+
+		<entity_class name="sc_Construction">
+			<property name="Class" value="EntitySupplyCrate"/>
+			<property name="Parent" value="SupplyCrates"/>
+			<property name="Prefab" value="SupplyCrate"/>
+			<property name="Mesh" value="SupplyCrate/SupplyCrateEntityPrefab"/>
+			<property name="ModelType" value="SupplyCrate"/>
+			<property name="Faction" value="none"/>
+			<property name="MaxHealth" value="200"/>
+			<property name="Weight" value="100"/>
+			<property name="HasRagdoll" value="false"/>
+			<property name="SurfaceCategory" value="wood"/>
+			<property name="ParticleOnDeath" value="supply_crate_gib_Prefab"/>
+			<property name="LootListAlive" value="29"/>
+			<property name="IsEnemyEntity" value="false"/>
+			<property name="SoundParachuteOpen" value="SupplyDrops/Parachute_Opens"/>
+			<property name="SoundLanding" value="SupplyDrops/Supply_Crate_Land"/>
+			<property name="TimeStayAfterDeath" value="0"/>
+			<effect_group name="Base Effects">
+				<passive_effect name="HealthMax" operation="base_set" value="200"/>
+			</effect_group>
+			<property name="NavObject" value="supply_drop" />
+		</entity_class>
+
+		<entity_class name="sc_Medical">
+			<property name="Class" value="EntitySupplyCrate"/>
+			<property name="Parent" value="SupplyCrates"/>
+			<property name="Prefab" value="SupplyCrate"/>
+			<property name="Mesh" value="SupplyCrate/SupplyCrateEntityPrefab"/>
+			<property name="ModelType" value="SupplyCrate"/>
+			<property name="Faction" value="none"/>
+			<property name="MaxHealth" value="200"/>
+			<property name="Weight" value="100"/>
+			<property name="HasRagdoll" value="false"/>
+			<property name="SurfaceCategory" value="wood"/>
+			<property name="ParticleOnDeath" value="supply_crate_gib_Prefab"/>
+			<property name="LootListAlive" value="30"/>
+			<property name="IsEnemyEntity" value="false"/>
+			<property name="SoundParachuteOpen" value="SupplyDrops/Parachute_Opens"/>
+			<property name="SoundLanding" value="SupplyDrops/Supply_Crate_Land"/>
+			<property name="TimeStayAfterDeath" value="0"/>
+			<effect_group name="Base Effects">
+				<passive_effect name="HealthMax" operation="base_set" value="200"/>
+			</effect_group>
+			<property name="NavObject" value="supply_drop" />
+		</entity_class>
+
+		<entity_class name="sc_Ammo">
+			<property name="Class" value="EntitySupplyCrate"/>
+			<property name="Parent" value="SupplyCrates"/>
+			<property name="Prefab" value="SupplyCrate"/>
+			<property name="Mesh" value="SupplyCrate/SupplyCrateEntityPrefab"/>
+			<property name="ModelType" value="SupplyCrate"/>
+			<property name="Faction" value="none"/>
+			<property name="MaxHealth" value="200"/>
+			<property name="Weight" value="100"/>
+			<property name="HasRagdoll" value="false"/>
+			<property name="SurfaceCategory" value="wood"/>
+			<property name="ParticleOnDeath" value="supply_crate_gib_Prefab"/>
+			<property name="LootListAlive" value="31"/>
+			<property name="IsEnemyEntity" value="false"/>
+			<property name="SoundParachuteOpen" value="SupplyDrops/Parachute_Opens"/>
+			<property name="SoundLanding" value="SupplyDrops/Supply_Crate_Land"/>
+			<property name="TimeStayAfterDeath" value="0"/>
+			<effect_group name="Base Effects">
+				<passive_effect name="HealthMax" operation="base_set" value="200"/>
+			</effect_group>
+			<property name="NavObject" value="supply_drop" />
+		</entity_class>
+	</append>
+</config>

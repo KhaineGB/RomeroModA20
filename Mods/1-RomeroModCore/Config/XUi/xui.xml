@@ -1,0 +1,3 @@
+﻿<configs>
+	<set xpath="/xui/ruleset[@name='default']/window_group[@name='ingameMenu']/window[@name='ingameMenu']/@name">RomeroModInGameMenu</set>
+</configs>

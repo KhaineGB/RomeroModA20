@@ -1,0 +1,23 @@
+Key,English
+takeandreplace,Rip off 
+musicbox_turnOn,Turn On
+musicbox_turnOff,Turn Off
+BanditFactionSchematic,Master of disguse
+UndeadFactionSchematic,Master of disguse
+DukeRiverFactionSchematic,Master of disguse
+WhiteRiverFactionSchematic,Master of disguse
+ResetFactionSchematic,Master of disguse
+ResetFactionSchematicDesc,Read this to reset your faction!
+BanditFactionSchematicDesc,Read this to switch over to the bandit faction!
+UndeadFactionSchematicDesc,Read this to switch over to the undead faction!
+WhiteRiverFactionSchematicDesc,Read this to switch over to the White River faction!
+DukeRiverFactionSchematicDesc,Read this to switch over to the Duke faction!
+UndeadPositiveFactionSchematic,Peace and Love to the Undead
+UndeadPositiveFactionSchematicDesc,Read this to spread the message of the undead! Increase your standings with the undead!
+UndeadNegativeFactionSchematic,Undead: Unreliable! Untrustworthy!
+UndeadNegativeFactionSchematicDesc,Read this to spread lies and fake news about the undead! Decrease your standings with the undead!
+advancedlockpicking_desc,Use the arrow keys to change the position of the picklocks. Then space to try to unlock.
+SpawnCube,Spawn Cube
+SpawnCubeDesc,"Allows Prefab builders to set up specific spawn entities via in-game programable code:  Sign Text:  ec=npcBaker;task=wander;pc=99. Entity Class zombie Bow, with Task Wander, and PathingCode 99."
+loadingTipScoreSigns_title,(SCore) Enhanced Signs
+loadingTipScoreSigns,"Enter a URL for an image or gif, like an imgur link, in a sign's edit box to display the image on the sign! Re-Edit to change it."

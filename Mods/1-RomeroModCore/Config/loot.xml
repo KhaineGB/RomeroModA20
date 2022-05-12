@@ -1,0 +1,27 @@
+<config>
+	<append xpath="lootcontainers/lootgroup[@name='schematicsToolsT0']">
+		<item name="meleeToolScrapIronSetSchematic"/>
+	</append>
+	
+	<append xpath="lootcontainers/lootgroup[@name='schematicsWeaponsArmorT0']">
+		<item name="meleeWpnSpearScrapSchematic"/>
+		<item name="meleeWpnBladeScrapMacheteSchematic"/>
+		<item name="meleeWpnClubScrapSchematic"/>
+		<item name="meleeWpnKnucklesScrapSchematic"/>
+	</append>
+	
+	<set xpath="lootcontainers/lootgroup[@name='groupToolsT0']">
+		<item name="meleeToolScrapFireaxe"/>
+		<item name="meleeToolScrapPickaxe"/>
+		<item name="meleeToolScrapShovel"/>
+	</set>
+	
+	<set xpath="/lootcontainers/lootgroup[@name='groupWeaponsT0_All']/item[@name='meleeWpnBladeT0BoneKnife']/@name">meleeWpnBladeScrapMachete</set>
+	<set xpath="/lootcontainers/lootgroup[@name='groupWeaponsT0_All']/item[@name='meleeWpnClubT0WoodenClub']/@name">meleeWpnClubScrap</set>
+	<set xpath="/lootcontainers/lootgroup[@name='groupWeaponsT0_All']/item[@name='meleeWpnKnucklesT0LeatherKnuckles']/@name">meleeWpnKnucklesScrap</set>
+	<set xpath="/lootcontainers/lootgroup[@name='groupWeaponsT0_All']/item[@name='meleeWpnSpearT0StoneSpear']/@name">meleeWpnSpearScrap</set>
+	<set xpath="/lootcontainers/lootgroup[@name='groupWeaponsT0_Melee']/item[@name='meleeWpnBladeT0BoneKnife']/@name">meleeWpnBladeScrapMachete</set>
+	<set xpath="/lootcontainers/lootgroup[@name='groupWeaponsT0_Melee']/item[@name='meleeWpnClubT0WoodenClub']/@name">meleeWpnClubScrap</set>
+	<set xpath="/lootcontainers/lootgroup[@name='groupWeaponsT0_Melee']/item[@name='meleeWpnKnucklesT0LeatherKnuckles']/@name">meleeWpnKnucklesScrap</set>
+	<set xpath="/lootcontainers/lootgroup[@name='groupWeaponsT0_Melee']/item[@name='meleeWpnSpearT0StoneSpear']/@name">meleeWpnSpearScrap</set>
+</config>

@@ -1,0 +1,222 @@
+<config>
+	<set xpath="/windows/window[@name='newContinueGame']">
+			<panel name="header" pos="0,0" height="43" depth="1" backgroundspritename="ui_game_panel_header" bordercolor="[black]" borderthickness="3" >
+				<label style="header.name" name="windowheader" pos="6,-6" width="550" text_key="xuiNewContinueGame" />
+			</panel>
+			
+			<rect pos="0,-50" height="650" width="590">
+				<rect name="newContent" visible="{isnewgame}">
+					<sprite depth="10" name="border" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" globalopacity="true" globalopacitymod="0.9" />
+					<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" color="[mediumGrey]" type="sliced" fillcenter="true" />
+
+					<rect pos="8,-40">
+						<grid rows="13" cell_width="525" cell_height="45" repeat_content="false" arrangement="vertical" >
+							<rect>
+								<label depth="4" width="250" height="30" style="hover" tooltip_key="goGameNameDesc" text_key="goGameName" font_size="28" color="[white]" justify="right" pivot="topleft" />
+								<textfield name="txtGameName" depth="5" pos="289,0" width="232" height="32" pivot="topLeft" on_hover="true" />
+							</rect>
+							<rect visible="{false}">
+								<label depth="4" width="250" height="30" style="hover" tooltip_key="goGameModeDesc" text_key="goGameMode" font_size="28" color="[white]" justify="right" pivot="topleft" />
+								<combobox name="cbxGameMode" type="ComboBoxList`1[GameMode]" value_wrap="false" pos="255,0" width="300" height="32" />
+							</rect>
+							<rect>
+								<label depth="4" width="250" height="30" style="hover" tooltip_key="goGameWorldDesc" text_key="goGameWorld" font_size="28" color="[white]" justify="right" pivot="topleft" />
+								<combobox name="cbxWorldName" type="ComboBoxList`1[XUiC_NewContinueGame+LevelInfo]" value_wrap="false" pos="255,0" width="300" height="32" />  <!-- localization_prefix="xuiWorldName" -->
+							</rect>
+							<rect visible="{isnotgenerateworld}">
+								<label depth="4" width="250" height="30" style="hover" text_key="xuiMapSize" font_size="28" color="[white]" justify="right" pivot="topleft" />
+								<sprite depth="3" name="backgroundMain"  pos="289,0" width="232" height="32" sprite="menu_empty3px" color="[darkGrey]" type="sliced" fillcenter="true" />
+								<label name="countyName" depth="4" pos="289,-2" width="232" height="32" style="hover" font_size="28" color="[white]" justify="center" pivot="topleft" text="{mapsize}" />
+							</rect>
+							<rect visible="{differentworldversion}">
+								<label depth="4" width="250" height="30" style="hover" text_key="xuiWorldDifferentGameVersion" font_size="28" color="[white]" justify="right" pivot="topleft" />
+								<sprite depth="3" name="backgroundMain"  pos="289,0" width="232" height="32" sprite="menu_empty3px" color="[darkGrey]" type="sliced" fillcenter="true" />
+								<label depth="4" pos="289,-2" width="232" height="32" style="hover" font_size="28" justify="center" pivot="topleft" text="{worldgameversion}" tooltip_key="xuiWorldDifferentVersionTooltip" color="[red]" />
+							</rect>
+						</grid>
+					</rect>
+					
+					<rect pos="8,-155" visible="{isgenerateworld}" controller="WorldGenerationWindowGroup">
+						<grid rows="13" cell_width="525" cell_height="45" repeat_content="false" arrangement="vertical">
+							<rect>
+								<label depth="4" width="250" height="30" style="hover" tooltip_key="xuiRwgCountyNameDesc" text="Seed" text_key="xuiRwgCountyName" font_size="28" color="[white]" justify="right" pivot="topleft" />
+								<sprite depth="3" name="backgroundMain"  pos="289,0" width="232" height="32" sprite="menu_empty3px" color="[darkGrey]" type="sliced" fillcenter="true" />
+								<label name="countyName" depth="4" pos="289,-2" width="232" height="32" style="hover" font_size="28" color="[white]" justify="center" pivot="topleft" />
+							</rect>
+							<rect>
+								<label depth="4" width="250" height="30" style="hover" tooltip_key="xuiRwgWorldSeedDesc" text="Seed" text_key="xuiRwgWorldSeed" font_size="28" color="[white]" justify="right" pivot="topleft" />
+								<textfield name="seedInput" depth="5" pos="289,0" width="232" height="32" pivot="topLeft" on_hover="true" />
+							</rect>
+							<rect>
+								<label depth="4" width="250" height="30" style="hover" tooltip_key="xuiRwgWorldSizeDesc" text="World Size" text_key="xuiRwgWorldSize" font_size="28" color="[white]" justify="right" pivot="topleft" />
+								<combobox depth="108" pos="255,0" width="300" height="32" name="WorldSize" type="ComboBoxList`1[System.String]" values="6144,8192,10240,12288,14336,16384" value_wrap="false" />
+							</rect>
+							<rect/>
+							<rect/>
+							<rect>
+								<simplebutton name="btnGenerateWorld" pos="289,0" width="232" height="32" font_size="26" text="Advanced Generation" caption_key="btnAdvancedGeneration" upper_case="true"/>
+							</rect>
+						</grid>
+					</rect>
+					
+				</rect>
+		
+				<rect name="continueContent" visible="{iscontinuegame}">
+					<rect name="saves" pos="0,0" height="650" width="590" controller="SavegamesList" matching_version_color="60,255,60,128" compatible_version_color="255,216,0" incompatible_version_color="255,0,0" clear_selection_on_open="false" clear_searchtext_on_open="true">
+						<sprite depth="8" name="border" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+						<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" color="[mediumGrey]" type="sliced" fillcenter="true" />
+
+						<rect depth="4" name="searchControls" height="44" pos="0,-0">
+							<sprite depth="8" name="backgroundMain" sprite="menu_empty" color="[black]" type="sliced" fillcenter="false" />
+
+							<sprite depth="4" name="searchIcon" style="icon30px" pos="5,-22" sprite="ui_game_symbol_search" pivot="Left"/>
+							<textfield name="searchInput" depth="5" pos="40,-22" width="250" height="30" pivot="Left" search_field="true" />
+							
+							<panel pos="478,0" width="98" height="43" disableautobackground="true">
+								<pager name="pager" pos="1,-6" />
+							</panel>
+						</rect>
+						
+						<grid name="list" depth="2" rows="9" cols="1" pos="0,-44" height="490" cell_width="610" cell_height="61" repeat_content="true" arrangement="vertical" >
+							<savegames_list_entry width="590" height="61" />
+						</grid>
+
+						<simplebutton name="btnDeleteSave" pos="290,-610" width="200" height="30" font_size="26" caption_key="btnDelete" pivot="center" upper_case="true" />
+					</rect>
+				</rect>
+			</rect>
+			
+			<rect name="tabs" controller="TabSelector" pos="595,-50" width="590" height="650">
+				<panel name="disableOptions" depth="100" createuipanel="true" on_hover="true" disableautobackground="true">
+					<sprite depth="0" name="backgroundMain" sprite="menu_empty" color="0,0,0,100" type="sliced" fillcenter="true" />
+				</panel>
+				
+				<sprite depth="10" name="border" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" globalopacity="true" globalopacitymod="0.9" />
+
+				<rect name="tabsHeader" height="39" depth="0">
+					<!--<sprite depth="0" name="backgroundMainTabs" sprite="menu_empty3px" color="0,0,0,150" type="sliced" fillcenter="true" globalopacity="true" />-->
+					
+					<grid name="tabButtons" pos="3,-2" depth="2" rows="1" cols="4" cell_width="144" cell_height="36" repeat_content="true" arrangement="horizontal">
+						<rect>
+							<simplebutton name="tabButton" depth="2" pos="-1,0" width="143" height="36" font_size="34" caption_key="xuiBack" bordercolor="[transparent]" defaultcolor="[darkGrey]" selectedsprite="menu_empty" selectedcolor="[mediumGrey]" foregroundlayer="false" />
+							<sprite depth="8" sprite="menu_empty2px" pos="142,0" width="2" height="35" color="[black]" />
+						</rect>
+					</grid>
+				</rect>
+				
+				<rect name="tabsContents" depth="2" pos="0,-37" height="611">
+					<sprite depth="0" pos="2,0" width="586" name="backgroundMain" sprite="menu_empty3px" color="[mediumGrey]" type="sliced" fillcenter="true" />
+
+					<rect tab_key="xuiGameSettingsGeneral">
+						<grid pos="6,-40" rows="13" cell_width="525" cell_height="45" repeat_content="false" arrangement="vertical" >
+							<gameoption name="ServerVisibility" title="goServerVisibility" value_wrap="false" value_type="int" values="" display_names="goServerVisibility0,goServerVisibility1,goServerVisibility2" value_localization_prefix="" />
+							<gameoption name="ServerPassword" title="goPassword" value_wrap="false" value_type="string" values="" display_names="" value_localization_prefix="" is_textinput="true" password_field="true" />
+							<gameoption name="ServerMaxPlayerCount" title="goMaxPlayers" value_wrap="false" value_type="int" values="1, 2, 4, 8, 16" display_names="" value_localization_prefix="goPlayer" />
+							<rect/>
+							<gameoption name="GameDifficulty" title="goDifficulty" value_wrap="false" value_type="int" values="" display_names="goDifficulty1,goDifficulty2,goDifficulty3,goDifficulty4,goDifficulty5,goDifficulty6" value_localization_prefix="" />
+							<gameoption name="DayNightLength" title="goDayLength" value_wrap="false" value_type="int" values="15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180" display_names="" value_localization_prefix="goMinute" />
+							<gameoption name="DayLightLength" title="goDayLightLength" value_wrap="false" value_type="int" values="0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24" display_names="" value_localization_prefix="goDayLightLengthValue" />
+							<gameoption name="MaxSpawnedZombies" title="goMaxZombies" value_wrap="false" value_type="int" values="75, 100, 125, 150, 175, 200" display_names="" value_localization_prefix="goZombie" />
+							<gameoption name="MaxSpawnedAnimals" title="goMaxAnimals" value_wrap="false" value_type="int" values="20, 30, 40, 50, 60, 70, 80" display_names="" value_localization_prefix="goAnimal" />
+							<gameoption name="LandClaimCount" title="goLandClaimCount" value_wrap="false" value_type="int" values="1, 2, 3, 4, 5" display_names="" value_localization_prefix="goLandClaimCountValue" />
+						</grid>
+					</rect>
+
+					<rect tab_key="xuiGameSettingsBasic">
+						<grid pos="6,-40" rows="13" cell_width="525" cell_height="45" repeat_content="false" arrangement="vertical" >
+							<gameoption name="BloodMoonFrequency" title="goBloodMoonFrequency" value_wrap="false" value_type="int" values="0, 0" display_names="goDisabled" value_localization_prefix="goDay" />
+							<gameoption name="BloodMoonRange" title="goBloodMoonRange" value_wrap="false" value_type="int" values="0, 0" display_names="" value_localization_prefix="goDay" />
+							<gameoption name="BloodMoonWarning" title="goBloodMoonWarning" value_wrap="false" value_type="int" values="-1, 8, 18" display_names="goDisabled,goMorning,goEvening" value_localization_prefix="" />
+							<gameoption name="ZombieMove" title="goZombieMove" value_wrap="false" value_type="int" values="" display_names="goZMWalk,goZMWalk" value_localization_prefix="" />
+							<gameoption name="ZombieMoveNight" title="goZombieMoveNight" value_wrap="false" value_type="int" values="" display_names="goZMWalk,goZMWalk" value_localization_prefix="" />
+							<gameoption name="ZombieFeralMove" title="goZombieFeralMove" value_wrap="false" value_type="int" values="" display_names="goZMWalk,goZMWalk" value_localization_prefix="" />
+							<gameoption name="ZombieBMMove" title="goZombieBMMove" value_wrap="false" value_type="int" values="" display_names="goZMWalk,goZMWalk" value_localization_prefix="" />
+							<gameoption name="ZombieFeralSense" title="goZombieFeralSense" value_wrap="false" value_type="int" values="" display_names="goOff,goZMDay,goZMNight,goZMAll" value_localization_prefix="" />
+							<rect/>
+							<gameoption name="PersistentPlayerProfiles" title="goPersistentCharacters" value_wrap="false" value_type="bool" values="" display_names="" value_localization_prefix="" />
+							<gameoption name="XPMultiplier" title="goXPMultiplier" value_wrap="false" value_type="int" values="25, 50, 75, 100, 125, 150, 175, 200, 300" display_names="" value_localization_prefix="goXPMultiplierValue" />
+						</grid>
+					</rect>
+
+					<rect tab_key="xuiGameSettingsAdvanced">
+						<grid pos="6,-40" rows="13" cell_width="525" cell_height="45" repeat_content="false" arrangement="vertical" >
+							<gameoption name="BlockDamagePlayer" title="goBlockDamagePlayer" value_wrap="false" value_type="int" values="25, 50, 75, 100, 125, 150, 175, 200, 300" display_names="" value_localization_prefix="goBlockDamageValue" />
+							<gameoption name="BlockDamageAI" title="goBlockDamageAI" value_wrap="false" value_type="int" values="25, 33, 50, 67, 75, 100, 125, 150, 175, 200, 300" display_names="" value_localization_prefix="goBlockDamageValue" />
+							<gameoption name="BlockDamageAIBM" title="goBlockDamageAIBM" value_wrap="false" value_type="int" values="25, 33, 50, 67, 75, 100, 125, 150, 175, 200, 300" display_names="" value_localization_prefix="goBlockDamageValue" />
+							<gameoption name="LootAbundance" title="goLootAbundance" value_wrap="false" value_type="int" values="25, 33, 50, 67, 75, 100, 150, 200" display_names="" value_localization_prefix="goLootAbundanceValue" />
+							<gameoption name="LootRespawnDays" title="goLootRespawnDays" value_wrap="false" value_type="int" values="-1, 5, 7, 10, 15, 20, 30, 40, 50" display_names="goDisabled" value_localization_prefix="goLootRespawnDaysValue" />
+							<gameoption name="DropOnDeath" title="goDropOnDeath" value_wrap="false" value_type="int" values="" display_names="goNone,goAll,goToolbelt,goBackpack,goDeleteAll" value_localization_prefix="" />
+							<gameoption name="DropOnQuit" title="goDropOnQuit" value_wrap="false" value_type="int" values="" display_names="goNone,goAll,goToolbelt,goBackpack" value_localization_prefix="" />
+							<gameoption name="BloodMoonEnemyCount" title="goBloodMoonEnemyCount" value_wrap="false" value_type="int" values="4, 6, 8, 10, 12, 16, 24, 32, 64" display_names="" value_localization_prefix="goEnemie" />
+							<gameoption name="EnemySpawnMode" title="goEnemySpawn" value_wrap="false" value_type="bool" values="" display_names="" value_localization_prefix="" />
+							<gameoption name="AirDropFrequency" title="goAirDropFrequency" value_wrap="false" value_type="int" values="0, 24, 72, 168" display_names="goDisabled" value_localization_prefix="goAirDropValue" />
+							<gameoption name="BuildCreate" title="goBuildCreate" value_wrap="false" value_type="bool" values="" display_names="" value_localization_prefix="" />
+							<gameoption name="AirDropMarker" title="goMarkAirDrops" value_wrap="false" value_type="bool" values="" display_names="" value_localization_prefix="" />
+						</grid>
+					</rect>
+					
+					<rect tab_key="xuiGameSettingsMultiplayer">
+						<grid pos="6,-40" rows="13" cell_width="525" cell_height="45" repeat_content="false" arrangement="vertical" >
+							<gameoption name="PlayerKillingMode" title="goPlayerKillingMode" value_wrap="false" value_type="int" values="" display_names="goPlayerKillingModeNoKilling,goPlayerKillingModeKillAlliesOnly,goPlayerKillingModeKillStrangersOnly,goPlayerKillingModeKillEveryone" value_localization_prefix="" />
+							<gameoption name="LandClaimSize" title="goLandClaimSize" value_wrap="false" value_type="int" values="21, 31, 41, 51, 71" display_names="" value_localization_prefix="goLandClaimSizeValue" />
+							<gameoption name="LandClaimDeadZone" title="goLandClaimDeadZone" value_wrap="false" value_type="int" values="0, 5, 10, 15, 20, 30, 40, 50" display_names="goLandClaimNoDeadzone" value_localization_prefix="goLandClaimDeadZoneValue" />
+							<gameoption name="LandClaimExpiryTime" title="goLandClaimExpiryTime" value_wrap="false" value_type="int" values="1, 2, 3, 4, 5, 7, 10, 30" display_names="" value_localization_prefix="goLandClaimExpiryTimeValue" />
+							<gameoption name="LandClaimDecayMode" title="goLandClaimDecayMode" value_wrap="false" value_type="int" values="" display_names="goLandClaimDecayModeSlow,goLandClaimDecayModeFast,goLandClaimDecayModeNone" value_localization_prefix="" />
+							<gameoption name="LandClaimOnlineDurabilityModifier" title="goLandClaimOnlineDurabilityModifier" value_wrap="false" value_type="int" values="0, 1, 2, 4, 8, 16, 32, 64, 128, 256" display_names="goInfinite" value_localization_prefix="goLandClaimOnlineDurabilityModifierValue" />
+							<gameoption name="LandClaimOfflineDurabilityModifier" title="goLandClaimOfflineDurabilityModifier" value_wrap="false" value_type="int" values="0, 1, 2, 4, 8, 16, 32, 64, 128, 256" display_names="goInfinite" value_localization_prefix="goLandClaimOfflineDurabilityModifierValue" />
+							<gameoption name="LandClaimOfflineDelay" title="goLandClaimOfflineDelay" value_wrap="false" value_type="int" values="0, 1, 5, 10, 20, 30, 60" display_names="" value_localization_prefix="goMinute" />
+							<gameoption name="BedrollDeadZoneSize" title="goBedrollDeadZoneSize" value_wrap="false" value_type="int" values="0, 5, 15, 30" display_names="goLandClaimNoDeadzone" value_localization_prefix="goLandClaimDeadZoneValue" />
+							<gameoption name="BedrollExpiryTime" title="goBedrollExpiryTime" value_wrap="false" value_type="int" values="3, 7, 15, 30, 45, 60" display_names="" value_localization_prefix="goLandClaimExpiryTimeValue" />
+							
+							<gameoption name="PartySharedKillRange" title="goPartySharedKillRange" value_wrap="false" value_type="int" values="0, 100, 500, 1000, 5000, 10000" display_names="goDisabled" value_localization_prefix="goPartySharedKillRangeValue" />
+							<gameoption name="ServerPort" title="goPort" value_wrap="false" value_type="int" values="" display_names="" value_localization_prefix="" is_textinput="true" />
+
+							<gameoption name="DayCount" title="goDayCount" value_wrap="false" value_type="int" values="0, 1, 3, 5, 7, 9" display_names="goUnlimited" value_localization_prefix="goDay" />
+							<gameoption name="FragLimit" title="goFragLimit" value_wrap="false" value_type="int" values="0, 1, 5, 10, 15, 20, 25, 50" display_names="goUnlimited" value_localization_prefix="goFrag" />
+							<gameoption name="MatchLength" title="goMatchLength" value_wrap="false" value_type="int" values="0, 5, 10, 15, 20, 30, 60" display_names="goUnlimited" value_localization_prefix="goMinute" />
+							<gameoption name="RebuildMap" title="goRebuildMap" value_wrap="false" value_type="bool" values="" display_names="" value_localization_prefix="" />
+							<gameoption name="ZombiePlayers" title="goZombiePlayers" value_wrap="false" value_type="bool" values="" display_names="" value_localization_prefix="" />
+						</grid>
+					</rect>
+					
+				</rect>
+			</rect>
+
+			<rect pos="0, -720">
+				<simplebutton name="btnBack" depth="3" pos="0, 0" width="200" height="36" font_size="32" caption_key="xuiBack" upper_case="true" />
+				<simplebutton name="btnDefaults" depth="3" pos="960, 0" pivot="right" width="200" height="36" font_size="32" caption_key="xuiDefaults" visible="{isnewgame}" upper_case="true" />
+				<simplebutton name="btnStart" depth="3" pos="1165, 0" pivot="right" width="200" height="36" font_size="32" caption_key="xuiStart" sound="[start]" upper_case="true" />
+			</rect>
+			
+			<panel name="deleteSavePanel" depth="10000" createuipanel="true" on_hover="true" disableautobackground="true">
+				<rect pos="400,-200" width="400" height="200">
+					<panel pos="-20,20" width="440" height="240" clipping="softclip" clippingsoftness="20,20" disableautobackground="true">
+						<sprite depth="0" name="backgroundMain" sprite="menu_empty" color="0,0,0,100" type="sliced" fillcenter="true" />
+					</panel>
+				
+					<panel name="header" pos="0,0" height="43" depth="1" backgroundspritename="ui_game_panel_header" bordercolor="[black]" borderthickness="3" >
+						<label style="header.name" name="panelheader" pos="6,-6" width="550" text_key="xuiDeleteSaveGame" />
+					</panel>
+					
+					<rect pos="0,-50" height="106">
+						<sprite depth="10" name="border" sprite="menu_empty2px" color="[black]" type="sliced" fillcenter="false" globalopacity="true" globalopacitymod="0.9" />
+						<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" color="[mediumGrey]" type="sliced" fillcenter="true" globalopacitymod="2" />
+						
+						<label name="deleteText" pos="10,-8" width="380" height="100" pivot="topleft" justify="left" depth="2" />
+					</rect>
+					<rect pos="0, -164">
+						<simplebutton name="btnCancel" depth="3" pos="0, 0" width="180" height="36" font_size="32" caption_key="xuiCancel" upper_case="true" />
+						<simplebutton name="btnConfirm" depth="3" pos="400, 0" pivot="right" width="180" height="36" font_size="32" caption_key="btnConfirm" upper_case="true" />
+					</rect>
+				</rect>
+			</panel>
+	</set>
+	
+	<set xpath="/windows/window[@name='menuBackground']">
+		<texture depth="1" color="[white]" texture="@modfolder:/UI/MainMenu/background.jpg" name="bgTexture" anchor_left="#cam,0,-5" anchor_bottom="#cam,0,-5" anchor_right="#cam,1,5" anchor_top="#cam,1,5" />
+	</set>
+	<set xpath="/windows/window[@name='mainMenuLogo']">
+		<texture depth="3" color="[white]" texture="@modfolder:/UI/MainMenu/7DTD_logo.png" name="gameLogo" anchor_left="#cam,0.5,-20" anchor_bottom="#cam,0.5,70" anchor_right="#cam,0.5,-20" anchor_top="#cam,0.5,490" pivot="center" keep_aspect_ratio="BasedOnHeight" aspect_ratio="2.3" />
+		<label name="RomeroVersion" pos="230, 175" depth="0" size="250,33" text="V2" font_size="42" effect="outline" color="[white]" justify="center" />
+	</set>
+</config>

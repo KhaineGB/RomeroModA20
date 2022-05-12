@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+	<ModInfo>
+		<Name value="1-RomeroModCore" />
+		<Description value="Core files for Romero mod" />
+		<Author value="KhaineGB" />
+		<Version value="2.0" />
+		<Website value="https://7daystodie.com/forums/showthread.php?80827-Darkness-Falls-They-mostly-come-out-at-night" />
+	</ModInfo>
+    <DMT>
+        <!-- By default, compiled mods will be compiled into an assembly that matches the name value above. To over-ride, define this: -->
+        <AssemblyName>Harmony-1-RomeroModCore</AssemblyName>
+        <!-- Optional: This will control the folder's final destination  name -->
+        <DestinationFolderName>1-RomeroModCore</DestinationFolderName>
+    </DMT>
+</xml>
